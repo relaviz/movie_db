@@ -3,7 +3,7 @@ import Pagination from '@material-ui/lab/Pagination';
 import './App.css';
 import Movie from './component/Movies/Movie';
 
-const FEATURED_API = "https://api.themoviedb.org/3/movie/popular?api_key=3037bfadd9e1c933b394b866da84f2de&language=en-US&page=1";
+const FEATURED_API = "https://api.themoviedb.org/3/movie/popular?api_key=3037bfadd9e1c933b394b866da84f2de&language=en-US&page=";
 
 const SEARCH_API = "https://api.themoviedb.org/3/search/movie?api_key=3037bfadd9e1c933b394b866da84f2de&query=";
 
@@ -12,6 +12,7 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [pages, setPages] = useState([]);
+  const [page, setPage] = useState(1)
 
   useEffect(() => {
     getMovie(FEATURED_API);
@@ -40,6 +41,11 @@ function App() {
     setSearchTerm(e.target.value);
   };
 
+  const onPageChange = (event, page) => {
+    setPage(page);
+    getMovie(FEATURED_API + page)
+  }
+
   return (
     <>
       <header>
@@ -62,6 +68,8 @@ function App() {
         className="pagination"
         count={pages.total_pages}
         color="primary"
+        page={page}
+        onChange={onPageChange}
       />
     </>
   )
