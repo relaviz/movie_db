@@ -1,5 +1,6 @@
-import './App.css';
 import React, { useEffect, useState } from 'react';
+import Pagination from '@material-ui/lab/Pagination';
+import './App.css';
 import Movie from './component/Movies/Movie';
 
 const FEATURED_API = "https://api.themoviedb.org/3/movie/popular?api_key=3037bfadd9e1c933b394b866da84f2de&language=en-US&page=1";
@@ -9,7 +10,8 @@ const SEARCH_API = "https://api.themoviedb.org/3/search/movie?api_key=3037bfadd9
 function App() {
 
   const [movies, setMovies] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('')
+  const [searchTerm, setSearchTerm] = useState('');
+  const [pages, setPages] = useState([]);
 
   useEffect(() => {
     getMovie(FEATURED_API);
@@ -20,6 +22,7 @@ function App() {
       .then(res => res.json())
       .then(data => {
         console.log(data)
+        setPages(data)
         setMovies(data.results)
       });
   }
@@ -55,6 +58,11 @@ function App() {
           <Movie key={movie.id} {...movie} />
         )}
       </div>
+      <Pagination
+        className="pagination"
+        count={pages.total_pages}
+        color="primary"
+      />
     </>
   )
 }

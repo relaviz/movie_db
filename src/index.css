@@ -118,3 +118,9 @@ header {
 .tag.red {
   color: rgb(255, 5, 5);
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  background-color: #373b69;
+}

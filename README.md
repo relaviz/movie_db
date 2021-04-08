@@ -76,4 +76,4 @@ featured :  "https://api.themoviedb.org/3/movie/popular?api_key=3037bfadd9e1c933
 images:     "https://image.tmdb.org/t/p/w500"
 
 search:  "
-https://api.themoviedb.org/3/search/movie?api_key=3037bfadd9e1c933b394b866da84f2de&language=en-US&page=1&include_adult=false"
+https://api.themoviedb.org/3/search/movie?api_key=3037bfadd9e1c933b394b866da84f2de&query="
