@@ -4,27 +4,42 @@ import './App.css';
 import Movie from './component/Movies/Movie';
 
 const FEATURED_API = "https://api.themoviedb.org/3/movie/popular?api_key=3037bfadd9e1c933b394b866da84f2de&language=en-US&page=";
-
 const SEARCH_API = "https://api.themoviedb.org/3/search/movie?api_key=3037bfadd9e1c933b394b866da84f2de&query=";
+const GENRE_API = "https://api.themoviedb.org/3/genre/movie/list?api_key=3037bfadd9e1c933b394b866da84f2de";
 
 function App() {
 
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [pages, setPages] = useState([]);
-  const [page, setPage] = useState(1)
+  const [page, setPage] = useState(1);
+  const [genre, setGenre] = useState([]);
 
   useEffect(() => {
+    getGerne(GENRE_API);
     getMovie(FEATURED_API);
   }, [])
 
+  // useEffect(() => {
+  //   getGerne(GENRE_API);
+  // }, [])
+  
+  let getGerne = (API) => {
+    fetch(API)
+      .then(res => res.json())
+      .then(data => {
+        setGenre(data)
+      })
+  }
+
+ 
   const getMovie = (API) => {
     fetch(API)
       .then(res => res.json())
       .then(data => {
-        console.log(data)
         setPages(data)
         setMovies(data.results)
+        console.log(data)
       });
   }
 
@@ -61,7 +76,7 @@ function App() {
       </header>
       <div className="movie-container">
         {movies.length > 0 && movies.map(movie =>
-          <Movie key={movie.id} {...movie} />
+          <Movie key={movie.id} {...movie} genre={genre.genres} />
         )}
       </div>
       <Pagination
