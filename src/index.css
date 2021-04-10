@@ -25,6 +25,12 @@ code {
   box-sizing: border-box;
 }
 
+a {
+  outline: none;
+  text-decoration: none;
+  color: aliceblue;
+}
+
 .movie {
   width: 250px;
   margin: 1rem;
@@ -66,13 +72,14 @@ header {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  cursor: pointer;
 }
 
 .movie-info {
   display: flex;
   padding: 1rem;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .movie-info h3 {

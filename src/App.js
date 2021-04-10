@@ -1,92 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import Pagination from '@material-ui/lab/Pagination';
+import React from 'react';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
-import Movie from './component/Movies/Movie';
+import MovieContainer from './component/Movies/MovieContainer';
 
-const FEATURED_API = "https://api.themoviedb.org/3/movie/popular?api_key=3037bfadd9e1c933b394b866da84f2de&language=en-US&page=";
-const SEARCH_API = "https://api.themoviedb.org/3/search/movie?api_key=3037bfadd9e1c933b394b866da84f2de&query=";
-const GENRE_API = "https://api.themoviedb.org/3/genre/movie/list?api_key=3037bfadd9e1c933b394b866da84f2de";
-
-function App() {
-
-  const [movies, setMovies] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [pages, setPages] = useState([]);
-  const [page, setPage] = useState(1);
-  const [genre, setGenre] = useState([]);
-
-  useEffect(() => {
-    getGerne(GENRE_API);
-    getMovie(FEATURED_API);
-  }, [])
-
-  // useEffect(() => {
-  //   getGerne(GENRE_API);
-  // }, [])
-  
-  let getGerne = (API) => {
-    fetch(API)
-      .then(res => res.json())
-      .then(data => {
-        setGenre(data)
-      })
-  }
-
- 
-  const getMovie = (API) => {
-    fetch(API)
-      .then(res => res.json())
-      .then(data => {
-        setPages(data)
-        setMovies(data.results)
-        console.log(data)
-      });
-  }
-
-  const handleOnSubmit = (e) => {
-    e.preventDefault();
-
-    if (searchTerm) {
-      getMovie(SEARCH_API + searchTerm)
-      setSearchTerm('');
-    }
-  };
-
-  const handleOnChange = (e) => {
-    setSearchTerm(e.target.value);
-  };
-
-  const onPageChange = (event, page) => {
-    setPage(page);
-    getMovie(FEATURED_API + page)
-  }
+const App = () => {
 
   return (
-    <>
-      <header>
-        <form onSubmit={handleOnSubmit} >
-          <input
-            className="search"
-            type="search"
-            placeholder="Search..."
-            value={searchTerm}
-            onChange={handleOnChange}
+      <Router>
+        <Switch>
+          <Route
+            exact path='/'
+            render={() =>
+              <Redirect to={'/movie'} />}
           />
-        </form>
-      </header>
-      <div className="movie-container">
-        {movies.length > 0 && movies.map(movie =>
-          <Movie key={movie.id} {...movie} genre={genre.genres} />
-        )}
-      </div>
-      <Pagination
-        className="pagination"
-        count={pages.total_pages}
-        color="primary"
-        page={page}
-        onChange={onPageChange}
-      />
-    </>
+          <Route
+            path='/movie'
+            component={MovieContainer} />
+          <Route
+            path='*'
+            render={() => <div>404 NOT FOUND</div>} />
+        </Switch>
+      </Router>
   )
 }
 
