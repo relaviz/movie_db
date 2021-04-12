@@ -48,11 +48,22 @@ a {
 }
 
 header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0;
+}
+
+.auth {
+  padding-right: 50px;
+}
+
+.search-header {
   background-color: #373b69;
-  padding: 1rem;
+  padding: 5px;
   display: flex;
   justify-content: flex-end;
 }
+
 
 .search {
   background-color: transparent;
@@ -136,4 +147,78 @@ header {
   display: flex;
   justify-content: center;
   text-align: center;
+}
+
+.shortcut_bar {
+  background-color: white;
+  height: 3rem;
+}
+
+.column_info {
+  display: flex;
+  flex-direction: row;
+}
+
+
+.release_date {
+  font-size: 1.4rem;
+  margin: 4px;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+}
+
+.release {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.facts {
+  display: flex;
+  flex-direction: unset;
+  justify-content: first baseline;
+  margin: 1px;
+  text-align: center;
+  position: absolute;
+  
+}
+
+.genre_container {
+  display: block;
+  flex-direction: unset;
+}
+
+.genre_container li {
+  margin: 0px;
+  padding: 5px;
+}
+
+.genre_container ul{
+  margin: 0;
+  padding-left: 20px;
+}
+
+ul.hr {
+  margin: 0;
+  padding: 0px;
+}
+
+ul.hr li {
+  display: inline; /* Отображать как строчный элемент */
+  margin-right: 5px; /* Отступ слева */
+  padding: 3px; /* Поля вокруг текста */
+}
+/* ----------------------------------------------- */
+
+.header_poster_wraper {
+  margin: 10px;
+  display: flex;
+  text-align: center;
+  padding-left: 20px;
+}
+
+.poster_wraper {
+  text-align: center;
+}
+
+.poster_overview {
+  margin-top: 50px;
 }

@@ -1,11 +1,13 @@
 import React from 'react';
 
-const Header = (props) => {
-    return (<header>
-      <form onSubmit={props.handleOnSubmit}>
-        <input className="search" type="search" placeholder="Search..." value={props.searchTerm} onChange={props.handleOnChange} />
-      </form>
-    </header>);
-  }
+const Header = () => {
+    return (
+        <header>
+            <div className="auth">
+                <h3>Login</h3>
+            </div>
+        </header>
+    )
+}
 
-  export default Header;
+export default Header;

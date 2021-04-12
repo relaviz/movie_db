@@ -1,10 +1,14 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink, useRouteMatch } from 'react-router-dom';
 
 const IMG_API = "https://image.tmdb.org/t/p/w500";
 const randomImg = "https://images.unsplash.com/photo-1542204165-65bf26472b9b?ixid=MXwxMjA3fDB8MHxzZWFyY2h8M3x8bW92aWV8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60";
 
 const Movie = ({ title, poster_path, overview, vote_average, genre_ids, genre, id }) => {
+
+    const  match = useRouteMatch();
+    
+    // console.log(match.params.id)
 
     const genreFilter = (genre, genre_ids) => {
         return genre
@@ -23,7 +27,8 @@ const Movie = ({ title, poster_path, overview, vote_average, genre_ids, genre, i
     }
 
     return (
-        <NavLink to={'/movie/' + id}>
+        <>
+        <Link to={`${id}`}>
 
             <div className="movie">
                 <img src={poster_path ? (IMG_API + poster_path) : randomImg} alt={title} />
@@ -40,7 +45,8 @@ const Movie = ({ title, poster_path, overview, vote_average, genre_ids, genre, i
                     <ul>{genreFilter(genre, genre_ids)}</ul>
                 </div>
             </div>
-        </NavLink>
+            </Link>
+        </>
     )
 }
 
