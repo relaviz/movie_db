@@ -4,7 +4,6 @@ import '../../App.css';
 import Search from '../Search/Search';
 import PopularMovieList from './PopularMovieList';
 import { NavLink } from 'react-router-dom';
-import SingleMovie from './SingleMovie';
 
 const FEATURED_API = "https://api.themoviedb.org/3/movie/popular?api_key=3037bfadd9e1c933b394b866da84f2de&language=en-US&page=";
 const SEARCH_API = "https://api.themoviedb.org/3/search/movie?api_key=3037bfadd9e1c933b394b866da84f2de&query=";
@@ -82,9 +81,6 @@ const MovieContainer = (props) => {
                 page={page}
                 onChange={onPageChange}
             />
-            {/* <NavLink to='/movie/399566'>
-                <SingleMovie />
-            </NavLink> */}
         </>
     )
 }

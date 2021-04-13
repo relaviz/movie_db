@@ -3,13 +3,14 @@ import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-d
 import './App.css';
 import Header from './component/Header/Header';
 import MovieContainer from './component/Movies/MovieContainer';
+import Recommendation from './component/Movies/Recommendations';
 import SingleMovieContainer from './component/Movies/SingleMovieContainer';
 
 const App = () => {
 
   return (
     <Router>
-    <Header />
+      <Header />
       <Switch>
         <Route
           exact path='/'
@@ -29,6 +30,7 @@ const App = () => {
         >
           <SingleMovieContainer />
         </Route>
+
         <Route
           path='*'
           render={() => <div>404 NOT FOUND</div>} />

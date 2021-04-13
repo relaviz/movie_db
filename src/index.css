@@ -1,14 +1,13 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #22254b;
+  background-color: #163052;
   color: white;
   font-family: "Poponis", sans-serif;
   margin: 0;
+  box-sizing: border-box;
 }
 
 .root {
@@ -17,8 +16,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 * {
@@ -39,6 +37,7 @@ a {
   border-radius: 3px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  cursor: pointer;
 }
 
 .movie img {
@@ -64,7 +63,6 @@ header {
   justify-content: flex-end;
 }
 
-
 .search {
   background-color: transparent;
   font-family: inherit;
@@ -83,7 +81,7 @@ header {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  cursor: pointer;
+  
 }
 
 .movie-info {
@@ -107,7 +105,7 @@ header {
   overflow: auto;
   max-height: 100%;
   padding: 1rem;
-  transform: translateY(100%);
+  transform: translateY(102%);
   transition: transform 0.3s ease-in-out;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
@@ -149,9 +147,59 @@ header {
   text-align: center;
 }
 
+/* ---------------------------------- */
+
+.movie_content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  width: 100%;
+  box-sizing: border-box;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
 .shortcut_bar {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
   background-color: white;
   height: 3rem;
+  color: black;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  z-index: 1;
+  position: relative;
+  /* background-image: url("https://image.tmdb.org/t/p/w500/inJjDhCjfhh3RtrJWBmmDqeuSYC.jpg"); */
+  background-position: inherit;
+  border-bottom: 1px solid black;
+  background-position: right -200px top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* opacity: 0.3; */
+}
+
+.header_container {
+  background: linear-gradient(to bottom right, rgba(10.98%, 11.76%, 12.55%, 1.00), rgba(10.98%, 11.76%, 12.55%, 0.84));
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.single_column {
+  display: flex;
+  padding: 30px 40px 30px 40px;
+  position: relative;
+  z-index: 0;
 }
 
 .column_info {
@@ -159,11 +207,11 @@ header {
   flex-direction: row;
 }
 
-
 .release_date {
   font-size: 1.4rem;
   margin: 4px;
-  font-family: 'Source Sans Pro', Arial, sans-serif;
+  opacity: 0.8;
+  font-weight: 400;
 }
 
 .release {
@@ -178,7 +226,6 @@ header {
   margin: 1px;
   text-align: center;
   position: absolute;
-  
 }
 
 .genre_container {
@@ -191,7 +238,7 @@ header {
   padding: 5px;
 }
 
-.genre_container ul{
+.genre_container ul {
   margin: 0;
   padding-left: 20px;
 }
@@ -202,23 +249,59 @@ ul.hr {
 }
 
 ul.hr li {
-  display: inline; /* Отображать как строчный элемент */
-  margin-right: 5px; /* Отступ слева */
-  padding: 3px; /* Поля вокруг текста */
+  display: inline;
+  /* Отображать как строчный элемент */
+  margin-right: 5px;
+  /* Отступ слева */
+  padding: 3px;
+  /* Поля вокруг текста */
+  border: 1px solid black;
 }
-/* ----------------------------------------------- */
+
+/* ------------------------------------------- */
 
 .header_poster_wraper {
   margin: 10px;
   display: flex;
-  text-align: center;
+  position: relative;
   padding-left: 20px;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  font-size: 1em;
+  -webkit-font-smoothing: antialiased;
 }
 
-.poster_wraper {
-  text-align: center;
-}
-
-.poster_overview {
+.poster_info {
   margin-top: 50px;
+}
+
+.poster img {
+  height: 100%;
+  width: 300px;
+  border-radius: 5px;
+}
+
+.tagline {
+  margin-bottom: 0;
+  font-size: 1.1em;
+  font-weight: 400;
+  font-style: italic;
+  opacity: 0.7;
+}
+
+.overview {
+  font-family: sans-serif;
+}
+
+/* --------------recommendation------------------ */
+
+.recommendation_container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+
+.recommendation_container img {
+  max-height: 200px;
+  cursor: pointer;
 }
